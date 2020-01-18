@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.fh.mapper.EmpMapper">
+    <!--查询员工-->
+    <select id="queryEmpList"  resultType="com.fh.bean.EmpBean">
+     SELECT e.id,e.jobId,j.name as jobName,e.salary,e.entryTime,e.leaderId,l.name as leaderName,e.deptId,d.name as deptName,e.name
+     FROM t_emp e
+		LEFT JOIN t_job j on e.jobId=j.id
+		LEFT JOIN t_dept d on e.deptId=d.id
+		LEFT JOIN t_ld l on e.leaderId=l.id
+		where 1=1
+    </select>
+</mapper>
